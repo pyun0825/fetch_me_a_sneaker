@@ -59,7 +59,7 @@ async def background_task():
             is_in_stock = checkStock(targets[key][0], targets[key][1], targets[key][2])
             if is_in_stock:
                 await channel.send(f'{targets[key][2]} size {targets[key][1]} IN STOCK!')
-        await asyncio.sleep(20)
+        await asyncio.sleep(600)
 
 client.loop.create_task(background_task())
 client.run(TOKEN)
