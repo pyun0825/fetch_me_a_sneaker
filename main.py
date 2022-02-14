@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 load_dotenv(verbose=True)
 
 TOKEN = os.getenv('DISCORD_TOKEN')
+CHANNEL_ID = os.getenv('CHANNEL_ID')
 
 targets = {
     '993_MENS': [
@@ -52,7 +53,7 @@ async def on_ready():
 
 async def background_task():
     await client.wait_until_ready()
-    channel = client.get_channel(942651531705069581)
+    channel = client.get_channel(int(CHANNEL_ID))
     while not client.is_closed():
         for key in targets:
             is_in_stock = checkStock(targets[key][0], targets[key][1], targets[key][2])
